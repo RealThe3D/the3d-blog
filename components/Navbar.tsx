@@ -7,6 +7,11 @@ import { useTheme } from "next-themes";
 const Navbar = () => {
   const [mounted, setMounted] = useState(false);
   const { theme, setTheme } = useTheme();
+  let button: JSX.Element = (
+    <button onClick={changeTheme} aria-label="Theme switcher">
+      {theme == "light" ? <FaMoon size={24} /> : <FaSun size={24} />}
+    </button>
+  );
 
   useEffect(() => {
     setMounted(true);
@@ -16,18 +21,7 @@ const Navbar = () => {
     theme === "light" ? setTheme("dark") : setTheme("light");
   }
   if (!mounted) {
-    return (
-      <nav className="flex justify-between items-center p-4">
-        <div className="flex items-center font-bold">
-          <Link href="/" className="hover:underline">
-            Home
-          </Link>
-          <Link href="/posts" className=" hover:underline ml-4">
-            Posts
-          </Link>
-        </div>
-      </nav>
-    );
+    button = <></>;
   }
   return (
     <nav className="flex justify-between items-center p-4">
@@ -39,9 +33,7 @@ const Navbar = () => {
           Posts
         </Link>
       </div>
-      <button onClick={changeTheme}>
-        {theme == "light" ? <FaMoon size={24} /> : <FaSun size={24} />}
-      </button>
+      {button}
     </nav>
   );
 };
