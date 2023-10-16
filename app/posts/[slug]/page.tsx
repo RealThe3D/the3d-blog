@@ -1,7 +1,7 @@
 import { addMinutes, format } from "date-fns";
 import { allPosts } from "contentlayer/generated";
 import Image from "next/image";
-
+import { useMDXComponent } from "next-contentlayer/hooks";
 export const generateStaticParams = async () =>
   allPosts.map((post) => ({ slug: post._raw.flattenedPath }));
 
@@ -17,6 +17,8 @@ const PostPage = ({ params }: { params: { slug: string } }) => {
     addMinutes(new Date(post.date), new Date(post.date).getTimezoneOffset()),
     "MMMM d, yyyy"
   );
+  const MDXContent = useMDXComponent(post.body.code);
+
   return (
     <div className="flex flex-col justify-center divide-y mx-auto py-12 max-w-5xl">
       <header
@@ -28,7 +30,7 @@ const PostPage = ({ params }: { params: { slug: string } }) => {
         alt="some ai generated image i dunno"
         width={384}
         height={384}
-        className="w-96 self-center mb-4"
+        className="w-96 h-96 self-center p-4"
       />
       <section className="flex flex-col md:flex-row py-4">
         <div className="flex flex-col w-2/3 md:w-1/4 font-medium divide-y place-self-center md:place-self-start">
@@ -45,10 +47,9 @@ const PostPage = ({ params }: { params: { slug: string } }) => {
             <p className="text-sm">{postDate}</p>
           </div>
         </div>
-        <article
-          className="prose p-4 dark:prose-invert dark:prose-hotpink"
-          dangerouslySetInnerHTML={{ __html: post.body.html }}
-        />
+        <article className="prose p-4 dark:prose-invert dark:prose-hotpink">
+          <MDXContent />
+        </article>
       </section>
     </div>
   );
