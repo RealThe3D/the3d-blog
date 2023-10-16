@@ -7,4 +7,4 @@ const nextConfig = {
     mdxRs: true,
   },
 };
-module.exports = withContentlayer(withMDX(nextConfig));
+module.exports = withContentlayer(nextConfig);
