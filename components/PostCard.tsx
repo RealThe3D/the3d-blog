@@ -30,12 +30,10 @@ const PostCard = (post: Post) => {
               {post.category} &#8226; {postDate}
             </span>
           </div>
-          <Link className="text-blue-500" href={post.url}>
-            <span className="flex flex-row">
-              Read More
-              <span className="flex items-center ml-2">
-                <FaArrowRight />
-              </span>
+          <Link className="text-blue-600" href={post.url}>
+            <span className="flex items-center space-x-2">
+              <span>Read More</span>
+              <FaArrowRight />
             </span>
           </Link>
         </div>

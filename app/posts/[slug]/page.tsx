@@ -2,6 +2,7 @@ import { addMinutes, format } from "date-fns";
 import { allPosts } from "contentlayer/generated";
 import Image from "next/image";
 import { useMDXComponent } from "next-contentlayer/hooks";
+
 export const generateStaticParams = async () =>
   allPosts.map((post) => ({ slug: post._raw.flattenedPath }));
 
