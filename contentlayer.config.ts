@@ -1,6 +1,7 @@
 // contentlayer.config.ts
 import { defineDocumentType, makeSource } from "contentlayer/source-files";
 import highlight from "rehype-highlight";
+import readingTime from "reading-time";
 
 export const Post = defineDocumentType(() => ({
   name: "Post",
@@ -11,7 +12,6 @@ export const Post = defineDocumentType(() => ({
     date: { type: "date", required: true },
     description: { type: "string", required: true },
     category: { type: "string", required: true },
-    readTime: { type: "number", required: true },
     coverImage: {
       type: "string",
       required: true,
@@ -21,6 +21,10 @@ export const Post = defineDocumentType(() => ({
     url: {
       type: "string",
       resolve: (post) => `/posts/${post._raw.flattenedPath}`,
+    },
+    readTime: {
+      type: "number",
+      resolve: (post) => Math.ceil(readingTime(post.body.raw).minutes),
     },
   },
 }));
