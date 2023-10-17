@@ -3,13 +3,12 @@
     date: 2023-10-15
     description: An actually amazing framework?
     category: Coding
-    readTime: 15
     coverImage: /assets/svelte_logo.png
 ---
 
 # Svelte is like vanilla JavaScript, but better.
 
-JavaScript. A programming language that no one likes to write vanilla code for. It's not every abstract or fun to use vanilla JavaScript when making a website.
+JavaScript. A programming language that no one likes to write vanilla code for. It's not abstract or fun to use vanilla JavaScript when making a website.
 Svelte changes this. It's a JS framework that's similar to vanilla JS but has features that make it superior to vanilla JS. It's mainly praised by the "Vanilla JS-like" users.
 
 ## Example (Vanilla JS)
@@ -49,17 +48,17 @@ button.onclick = () => {
 };
 ```
 
-This makes a basic html page with a button that increments the number inside the `h1` element.
+This makes a basic HTML page with a button that increments the number inside the `h1` element.
 However, making two (or one or three, depending on whether you split the HTML, CSS, and JS into separate files) and writing this code is unfun
 
-For one, you can accidentally mistype an id on `button` or `h1` element, resulting in an error when click the button. Maybe you wrote
+For one, you can accidentally mistype an id on the `button` or `h1` element, resulting in an error when clicking the button. Maybe you wrote
 
 ```js
 // This will make the `onclick` event throw an error!
 const button = document.getElementById("counter-button");
 ```
 
-instead. HTML IDs are _specfic_ on what you are trying to grab from the DOM (Document Object Model)
+instead. HTML IDs are _specific_ on what you are trying to grab from the DOM (Document Object Model)
 
 Secondly, it's not type-safe. What if you accidentally write
 
@@ -73,7 +72,7 @@ Lastly, Vanilla JS won't scale well for large projects. This is a simple HTML pa
 
 ## Example (Svelte)
 
-SvelteKit already makes an html file for you, so I'll go straight into the Svelte part.
+SvelteKit already makes an HTML file for you, so I'll go straight into the Svelte part.
 
 ```tsx
 <script lang="ts">
@@ -95,9 +94,9 @@ SvelteKit already makes an html file for you, so I'll go straight into the Svelt
 </style>
 ```
 
-See how beautiful 💅 it looks? Concise, type-safe (thanks to TypeScript), and all is inside one file. Plus, no HTML IDs to target anything. 😎
+See how beautiful 💅 it looks? Concise, type-safe (thanks to TypeScript), and all are inside one file. Plus, no HTML IDs to target anything. 😎
 
-# Example (React)
+## Example (React)
 
 Why not? React is the most used framework (So used in fact that this website uses it, albeit with Next.js)
 
@@ -123,10 +122,10 @@ const Page = () => {
 ```
 
 This is better than Vanilla JS, but it's not Vanilla JS-like. Vanilla JS lacks `useState` and `useEffect` hooks.
-React JSX is more so it's own thing than to Vanilla JS.
+React JSX is more so its own thing than Vanilla JS.
 
 # Should you use Svelte?
 
-Yes. It's fun, Vanilla JS-like, and supports TypeScript. Highly recommend for anyone interested.
+Yes. It's fun, Vanilla JS-like, and supports TypeScript. Highly recommend it for anyone interested.
 
 [Here's a link to check out Svelte:](https://svelte.dev/)
