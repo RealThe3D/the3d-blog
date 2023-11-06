@@ -6,7 +6,7 @@ const Page = () => {
     <main className="flex xl:flex-row flex-col items-center xl:items-start xl:justify-between my-4">
       <div className="flex flex-col max-w-md xl:max-w-md 2xl:max-w-md place-items-center xl:place-items-start">
         <Image
-          src="/eri_halloween.jpg"
+          src="/eri.png"
           alt="profile picture"
           width={256}
           height={256}
