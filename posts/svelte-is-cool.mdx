@@ -84,7 +84,7 @@ SvelteKit already makes an HTML file for you, so I'll go straight into the Svelt
         count++;
     }
 </script>
-<h1>Count: {count}</h1>
+<h1 id="counter">Count: {count}</h1>
 <button on:click={increment}>Increment</button>
 
 <style>
