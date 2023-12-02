@@ -1,6 +1,6 @@
 "use client";
 import Link from "next/link";
-import { FaMoon, FaSun } from "react-icons/fa";
+import { FaGithub, FaMoon, FaSun } from "react-icons/fa";
 import { useState, useEffect } from "react";
 import { useTheme } from "next-themes";
 
@@ -33,7 +33,15 @@ const Navbar = () => {
           Posts
         </Link>
       </div>
-      {button}
+      <div className="flex items-center font-bold space-x-10">
+        <Link href="https://github.com/3DNinja54/the3d-blog">
+          <button className="flex flex-row bg-gradient-to-r from-purple-500 to-blue-500 p-2 rounded-md">
+            GitHub
+            <FaGithub size={24} className="ml-4" />
+          </button>
+        </Link>
+        {button}
+      </div>
     </nav>
   );
 };
