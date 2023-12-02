@@ -2,6 +2,15 @@
 @tailwind components;
 @tailwind utilities;
 
+/* FONTS */
+html {
+  font-family: var(--font-inter);
+}
+
+pre {
+  font-family: var(--font-jetbrains-mono);
+}
+
 /* width */
 ::-webkit-scrollbar {
   width: 10px;
@@ -21,4 +30,15 @@
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
   background: #60a5fa;
+}
+
+/* DARK MODE */
+html[style="color-scheme: dark;"] > ::-webkit-scrollbar-track {
+  background: #374151;
+}
+html[style="color-scheme: dark;"] > ::-webkit-scrollbar-thumb {
+  background: #fb7185;
+}
+html[style="color-scheme: dark;"] > ::-webkit-scrollbar-thumb:hover {
+  background: #f43f5e;
 }
