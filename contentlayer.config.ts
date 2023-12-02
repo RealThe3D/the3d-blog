@@ -11,7 +11,7 @@ export const Post = defineDocumentType(() => ({
     title: { type: "string", required: true },
     date: { type: "date", required: true },
     description: { type: "string", required: true },
-    category: { type: "string", required: true },
+    categories: { type: "list", of: { type: "string" }, required: true },
     coverImage: {
       type: "string",
       required: true,
@@ -33,6 +33,7 @@ export default makeSource({
   contentDirPath: "posts",
   documentTypes: [Post],
   mdx: {
+    // @ts-ignore
     rehypePlugins: [highlight],
   },
 });
