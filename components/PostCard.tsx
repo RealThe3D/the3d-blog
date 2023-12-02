@@ -27,7 +27,7 @@ const PostCard = (post: Post) => {
           <span className="text-gray-500"> {post.description}</span>
           <div className="text-sm w-fit text-gray-500 font-medium">
             <span>
-              {post.category} &#8226; {postDate}
+              {post.categories[0]} &#8226; {postDate}
             </span>
           </div>
           <Link className="text-blue-600" href={post.url}>
