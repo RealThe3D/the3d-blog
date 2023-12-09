@@ -29,9 +29,9 @@ const PostPage = ({ params }: { params: { slug: string } }) => {
       <Image
         src={post.coverImage}
         alt="some ai generated image i dunno"
-        width={384}
-        height={384}
-        className="w-96 h-96 self-center p-4"
+        width={512}
+        height={512}
+        className="w-96 h-96 md:w-[512px] md:h-[512px] self-center m-4 rounded-xl border-none shadow-lg dark:shadow-none"
       />
       <section className="flex flex-col md:flex-row py-4">
         <div className="flex flex-col w-2/3 md:w-1/4 font-medium divide-y place-self-center md:place-self-start">
