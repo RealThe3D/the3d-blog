@@ -12,9 +12,8 @@ const Page = () => {
           height={256}
           className="w-max rounded-full"
         />
-        <div className="text-xl mt-2 font-bold">The3D</div>
+        <div className="text-xl mt-2 font-bold">Hello, I&apos;m The3D.</div>
         <div className="place-self-center xl:place-self-start text-center xl:text-left">
-          Hello! <br />
           17 Years Old 🏌️‍♂️
           <br />
           Majoring in Computer Science and <br /> Electrical Engineering. 🎓
@@ -22,7 +21,7 @@ const Page = () => {
           Class of MMXXV 😃
         </div>
       </div>
-      <div className="flex flex-col xl:mt-0 mt-4 xl:mr-[10%] items-center xl:items-start">
+      <div className="flex flex-col xl:mt-0 mt-4 mx-auto md:mx-20 items-center md:items-start">
         <div className="flex flex-col justify-center divide-y divide-grey-400">
           <AllBlogs size={5} />
         </div>
