@@ -10,7 +10,7 @@ const AllBlogs = ({ size }: AllBlogsProps) => {
     .sort((a, b) => compareDesc(new Date(a.date), new Date(b.date)))
     .slice(0, size);
   return (
-    <div className="flex flex-col items-center divide-y divide-grey-400 mx-auto w-full">
+    <div className="flex flex-col items-center mx-auto w-full space-y-2">
       <h2 className="text-3xl font-extrabold">Posts</h2>
       {posts.map((post, idx) => (
         <PostCard key={idx} {...post} />

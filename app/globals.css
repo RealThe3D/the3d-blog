@@ -42,3 +42,8 @@ html[style="color-scheme: dark;"] > ::-webkit-scrollbar-thumb {
 html[style="color-scheme: dark;"] > ::-webkit-scrollbar-thumb:hover {
   background: #f43f5e;
 }
+
+/* Postcard Image Clipping */
+.postcard-img {
+  clip-path: polygon(0 0, 100% 0%, 100% 100%, 15% 100%);
+}
