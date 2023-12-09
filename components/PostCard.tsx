@@ -1,4 +1,3 @@
-"use client";
 import Image from "next/image";
 import { Post } from "contentlayer/generated";
 import Link from "next/link";
