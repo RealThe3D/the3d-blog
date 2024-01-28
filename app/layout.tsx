@@ -15,7 +15,7 @@ export const metadata: Metadata = {
   title: "The3D's Blog",
   description: "Blog created by The3D.",
   other: {
-    "google-site-verification": "_-QgjympglxSEiv2QGImscY8Q5bMz4IWBtjM1LxsT_k",
+    "google-site-verification": "ab4DR7xw7N4pxI0hFF41ko_Iw81BtYo967wKbsfpAgc",
   },
 };
 

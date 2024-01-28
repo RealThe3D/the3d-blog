@@ -23,7 +23,7 @@ const Page = () => {
       </div>
       <div className="flex flex-col xl:mt-0 mt-4 mx-auto md:mx-20 items-center md:items-start">
         <div className="flex flex-col justify-center divide-y divide-grey-400">
-          <AllBlogs size={5} />
+          <AllBlogs />
         </div>
       </div>
     </main>

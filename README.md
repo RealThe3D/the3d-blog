@@ -6,7 +6,7 @@ You'll find me rambling about nonsense here.
 
 # Website Link
 
-[Website Link](https://the3d.up.railway.app/)
+[Website Link](https://the3d.vercel.app/)
 
 # Can I use this for myself?
 
