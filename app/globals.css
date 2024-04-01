@@ -5,6 +5,7 @@
 /* FONTS */
 html {
   font-family: var(--font-inter);
+  rotate: 180deg;
 }
 
 pre {
