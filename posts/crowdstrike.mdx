@@ -9,22 +9,22 @@
 # CrowdStrike 2024 Incident Summary
 
 On July 19, 2024, CrowdStrike caused a global IT outage which affected over 8.5 million Windows computers.
-This outage caused airports to delay/cancel flights, hospitals to defer patients, banking systems to go down, among many more.
+This outage caused airports to delay/cancel flights, hospitals to defer patients, and banking systems to go down, among many more.
 
-It has been described as being the most impactful IT outage of the 21st century, but what really caused the outage?
+It has been described as being the most impactful IT outage of the 21st century, but what caused the outage?
 
-One of the main things to note is that July 19th was a Friday, usually the last day of the week that most people work on.
+One of the main things to note is that July 19th was a Friday, usually the last day of the week that most people work.
 
 ## What was the issue?
 
 The issue was that Falcon, one of CrowdStrike's suite of security products had bad code that caused it to crash.
-Falcon is a kernel-level access program, meaning that it runs _super_ deep inside of Windows. Anything that crashes with kernel-level access is likely to crash the entire operating system.
+Falcon is a kernel-level access program, meaning that it runs _super_ deep inside Windows. Anything that crashes with kernel-level access will likely crash the entire operating system.
 
-Falcon is also a program that runs as soon as Windows boots up. So if Falcon or any kernel-level load-on-startup program was to fail, it would cause a boot-crash loop.
+Falcon is also a program that runs as soon as Windows boots up. So if Falcon or any kernel-level load-on-startup program were to fail, it would cause a boot-crash loop.
 
-Unforunately, that is what happened with Falcon.
+Unfortunately, that is what happened with Falcon.
 
-According to [CrowdStrike](https://www.crowdstrike.com/blog/falcon-update-for-windows-hosts-technical-details/), the channel file, `C-00000291`, responsible for evaluating pipe executions, crashed because of update pushed to production.
+According to [CrowdStrike](https://www.crowdstrike.com/blog/falcon-update-for-windows-hosts-technical-details/), the channel file, `C-00000291`, responsible for evaluating pipe executions, crashed because of an update pushed to production.
 
 According to [Tavis Ormandy](https://x.com/taviso/status/1814762302337654829) on X, formerly known as Twitter, the root cause was dereferencing a null pointer. I don't know C++ that well, but I know that doing anything with null values except for handling "do this if something is null" is probably a bad idea.
 ![](../assets/banner_asomataru.png)
