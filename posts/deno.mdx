@@ -1,0 +1,63 @@
+---
+    title: Deno 2, I love it.
+    date: 2024-11-30
+    description: The "successor" to Node.js has reached version 2, and how do I feel about it?
+    categories: [Programming]
+    coverImage: /assets/glitchy-deno.jpg
+---
+
+# A talk about Node.js
+
+Before we talk about Deno, let's talk about Node.js, or simply Node. It's a JavaScript runtime that
+allows JavaScript to run outside of the browser. JavaScript normally only runs in a browser, but Node
+enables developers like me to make amazing projects, such as this very own website.
+
+In fact, as of this post being posted, I am using Node.js v20.15.1. Slightly outdated, but it works. 🤷
+
+## Node.js's flaws
+
+However, Node isn't without flaw. It has:
+
+- CommonJS import syntax instead of the much newer (and nicer imo) ES Module import syntax
+- No built-in TypeScript support, you have to transpile TS to JS or use a npm package like `tsx` or `ts-node`.
+- node_modules. A HUGE directory of all your dependencies' code. (As of writing this post, this project has 556MB of node_modules)
+- No built-in cross env support (I program on Windows, and packages such as `dotenv` tends to not import things properly on Windows unless you use `crossenv`)
+- Poor default tooling. Although Node 20 came with one, there was no testing library built into Node. Linters and formatters require things such as `eslint`, `biome`, and/or `prettier`, and much more.
+
+Ryan Dahl, the creator of Node noticed this, and debuted Deno (an anagram of Node) as a new runtime to fix these problems in 2018. Still, because of imcompatabilties between Deno and Node, Node is still used more to this day.
+Deno for the longest time didn't support npm packages. That made its ecosystem much more stagnant than Node's.
+
+I never bothered trying out Deno because of that. All of my Node projects use npm packages, and using Deno and deno.land/x/ would just himper my programming mindset.
+
+However, with the release of Deno 2 last month, that comes to an end. I tried it out and I love it.
+
+# Deno 2.0
+
+The main thing Deno 2.0 brought to the table was full npm package and Node API support. Any npm package made for Node will work with Deno right out of the box. Little to no tinkering required.
+
+I started an experimental branch of Asomataru that used Deno. With some small tinkering (mainly towards ESM imports and Prisma), I got all of the bot running under Deno in less than 10 minutes.
+
+All Node APIs (which Asomataru mainly uses `fs` to import commands and events) worked.
+
+I even got rid of dev packages I used such as `eslint` and `prettier` since `deno lint` and `deno fmt` replaces them both. Oh yeah, and typescript? Works straight out of the box, no questions asked.
+I even got a nice little test runner, too.
+
+![](../assets/deno_test.png)
+
+Importing env files into Asomataru became a lot more readable and understandable, as well as the linting warnings and errors being more detailed in Deno than they are in ESLint.
+
+I haven't played much around JSR (a registry for JavaScript packages), but `@std/assert` is a nice one for testing. It didn't require much to import it. But by far, my favorite feature in Deno is the built-in typescript support. I don't have to do crazy tsconfig.json changes (or use `@tsconfig/node20`) anymore! It just works!
+It's crazy how braindead simple Deno makes everything!
+
+## Deno's flaws
+
+Deno isn't perfect though. `content-layer` the backbone to this site's blog format doesn't play nice with Deno. The compile times are around 5-10x longer than Node's, and starting up this project takes almost 30 seconds compared to the ~5 Node takes.
+Some packages that are reliant on node_modules, such as `@prisma/client` don't play nice with Deno. Since Deno doesn't use node_modules and instead stores packages in cache, these packages tend to freakout when ever there is no node_modules folder. You can use Deno with node_modules and allow it to use that instead of the cache, but some issues will yet arise.
+
+Prisma Client required me to do some experimental tinkering to get to run on Deno. Thankfully Deno has a doc on Prisma usage in Deno, so it didn't take long to port it to Deno, but less fortunate packages might be tricky to get them on the Deno train.
+
+# Conclusion
+
+Overall, I like Deno 2.0. I want to see it grow, and eventually overtake Node as the most popular runtime. There's also Bun, but Bun has some compatability issues as well (e.g. Next.js). It's nice to see Ryan Dahl admit to Node's mistakes and fix them with Deno. It takes awhile for new tech to get used by the grand majority, but it'll get there.
+
+If you guys want to try Deno out, it's available on [Deno's website.](deno.com)
