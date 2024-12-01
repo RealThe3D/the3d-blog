@@ -1,10 +1,10 @@
 import Image from "next/image";
-import { Post } from "contentlayer/generated";
+import { posts } from "@/.velite";
 import Link from "next/link";
 import { addMinutes, format } from "date-fns";
 import { FaArrowRight } from "react-icons/fa";
 
-const PostCard = (post: Post) => {
+const PostCard = (post: (typeof posts)[0]) => {
   const postDate = format(
     addMinutes(new Date(post.date), new Date(post.date).getTimezoneOffset()),
     "MMMM d, yyyy"
@@ -13,7 +13,7 @@ const PostCard = (post: Post) => {
     <div className="flex flex-col w-full border-gray-300 dark:border-gray-700 border rounded-md py-2 md:py-0">
       <div className="flex flex-row pl-6 justify-between items-center h-auto">
         <div className="flex flex-col flex-wrap w-3/4">
-          <Link href={post.url} className="font-bold text-xl">
+          <Link href={`/posts/` + post.slug} className="font-bold text-xl">
             {post.title}
           </Link>
           <span className="text-gray-500 mb-1">{post.description}</span>
@@ -22,7 +22,7 @@ const PostCard = (post: Post) => {
               {post.categories[0]} &#8226; {postDate}
             </span>
           </div>
-          <Link className="text-blue-600" href={post.url}>
+          <Link className="text-blue-600" href={"/posts/" + post.slug}>
             <span className="flex items-center space-x-2">
               <span>Read More</span>
               <FaArrowRight />
@@ -30,7 +30,7 @@ const PostCard = (post: Post) => {
           </Link>
         </div>
         <Image
-          src={post.coverImage}
+          src={post.cover}
           alt="profile picture"
           width={256}
           height={256}

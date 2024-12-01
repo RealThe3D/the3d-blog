@@ -3,7 +3,7 @@
     date: 2024-07-31
     description: What caused the global IT outage at CrowdStrike earlier this month?
     categories: [Tech]
-    coverImage: /assets/Falcon-on-white.png
+    cover: ../../public/assets/Falcon-on-white.png
 ---
 
 # CrowdStrike 2024 Incident Summary
@@ -27,7 +27,7 @@ Unfortunately, that is what happened with Falcon.
 According to [CrowdStrike](https://www.crowdstrike.com/blog/falcon-update-for-windows-hosts-technical-details/), the channel file, `C-00000291`, responsible for evaluating pipe executions, crashed because of an update pushed to production.
 
 According to [Tavis Ormandy](https://x.com/taviso/status/1814762302337654829) on X, formerly known as Twitter, the root cause was dereferencing a null pointer. I don't know C++ that well, but I know that doing anything with null values except for handling "do this if something is null" is probably a bad idea.
-![](../assets/banner_asomataru.png)
+![](../../public/assets/banner_asomataru.png)
 _This is [banner.ts](https://github.com/3DNinja54/asomataru/blob/main/src/commands/general/banner.ts) from my discord bot, Asomataru. Note that this screenshot may not apply to the current releases of Asomataru._
 
 _In this code, `userBanner.banner` could be null, so I return a warning so that the bot doesn't potentially crash if the selected user doesn't have a banner (e.g. non-nitro account)._
@@ -37,7 +37,7 @@ _In this code, `userBanner.banner` could be null, so I return a warning so that 
 CrowdStrike has officially released a "how-to-fix" video to fix this issue on Falcon. From July 19-26, many companies have recovered from the issue, but some have not.
 CrowdStrike's stock has dropped by almost half since then.
 
-![](../assets/crowdstrike_stock.png)
+![](../../public/assets/crowdstrike_stock.png)
 _Fun fact: it dropped by 2 cents right after I took this screenshot._
 
 ## Ending

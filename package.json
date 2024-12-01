@@ -1,6 +1,6 @@
 {
   "name": "the3d-blog",
-  "version": "1.1.1",
+  "version": "2.0.0",
   "private": true,
   "license": "MIT",
   "repository": "https://www.github.com/3DNinja54/the3d-blog.git",
@@ -11,28 +11,33 @@
     "lint": "next lint"
   },
   "devDependencies": {
-    "@tailwindcss/typography": "^0.5.10",
+    "@tailwindcss/typography": "^0.5.15",
     "@types/node": "^20.14.8",
-    "@types/react": "^18.3.3",
-    "@types/react-dom": "^18.3.0",
-    "autoprefixer": "^10.4.19",
-    "eslint": "^9.7.0",
-    "eslint-config-next": "^14.2.5",
-    "postcss": "^8.4.40",
-    "tailwindcss": "^3.4.7",
-    "typescript": "^5.5.4"
+    "@types/react": "npm:types-react@19.0.0-rc.1",
+    "@types/react-dom": "npm:types-react-dom@19.0.0-rc.1",
+    "autoprefixer": "^10.4.20",
+    "eslint": "^9.16.0",
+    "eslint-config-next": "15.0.3",
+    "postcss": "^8.4.49",
+    "tailwindcss": "^3.4.15",
+    "typescript": "^5.7.2"
   },
   "dependencies": {
-    "contentlayer": "^0.3.4",
-    "date-fns": "^3.6.0",
-    "next": "^14.2.5",
-    "next-contentlayer": "^0.3.4",
-    "next-themes": "^0.3.0",
-    "react": "^18.3.1",
-    "react-dom": "^18.3.1",
+    "@shikijs/rehype": "^1.24.0",
+    "@sindresorhus/slugify": "^2.2.1",
+    "date-fns": "^4.1.0",
+    "next": "15.0.3",
+    "next-themes": "^0.4.3",
+    "react": "19.0.0-rc-66855b96-20241106",
+    "react-dom": "19.0.0-rc-66855b96-20241106",
     "react-icons": "^4.11.0",
     "reading-time": "^1.5.0",
-    "rehype-highlight": "^7.0.0",
-    "sharp": "^0.33.0"
+    "sharp": "^0.33.5",
+    "shiki": "^1.24.0",
+    "velite": "^0.2.1"
+  },
+  "overrides": {
+    "@types/react": "npm:types-react@19.0.0-rc.1",
+    "@types/react-dom": "npm:types-react-dom@19.0.0-rc.1"
   }
 }

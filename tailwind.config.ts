@@ -7,8 +7,8 @@ const config: Config = {
   ],
   theme: {
     extend: {
-      // @ts-ignore
-      typography: ({ theme }) => ({
+      // @ts-ignore type safety idk
+      typography: ({ _theme }) => ({
         hotpink: {
           css: {
             "--tw-prose-invert-headings": "#FF3366",

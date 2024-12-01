@@ -1,0 +1,13 @@
+{
+  "compilerOptions": {
+    "lib": ["dom", "dom.iterable", "esnext"],
+    "strict": false,
+    "jsx": "react-jsx"
+  },
+  "imports": {
+    "@/": "./",
+    "velite": "npm:velite",
+    "@sindresorhus/slugify": "npm:@sindresorhus/slugify",
+    "@shikijs/rehype": "npm:@shikijs/rehype"
+  }
+}

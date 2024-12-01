@@ -7,7 +7,7 @@ import { useTheme } from "next-themes";
 const Navbar = () => {
   const [mounted, setMounted] = useState(false);
   const { theme, setTheme } = useTheme();
-  let button: JSX.Element = (
+  let button = (
     <button onClick={changeTheme} aria-label="Theme switcher">
       {theme == "light" ? <FaMoon size={24} /> : <FaSun size={24} />}
     </button>

@@ -1,24 +1,26 @@
-import { addMinutes, format } from "date-fns";
-import { allPosts } from "contentlayer/generated";
 import Image from "next/image";
-import { getMDXComponent } from "next-contentlayer/hooks";
+import { notFound } from "next/navigation";
+import { posts } from "@/.velite";
+import { MDXContent } from "@/components/Mdx";
+import { addMinutes, format } from "date-fns";
 
-export const generateStaticParams = async () =>
-  allPosts.map((post) => ({ slug: post._raw.flattenedPath }));
+interface PostProps {
+  params: Promise<{ slug: string }>;
+}
 
-export const generateMetadata = ({ params }: { params: { slug: string } }) => {
-  const post = allPosts.find((post) => post._raw.flattenedPath === params.slug);
-  if (!post) throw new Error(`Post not found for slug: ${params.slug}`);
-  return { title: post.title };
-};
-const PostPage = ({ params }: { params: { slug: string } }) => {
-  const post = allPosts.find((post) => post._raw.flattenedPath === params.slug);
-  if (!post) throw new Error(`Post not found for slug: ${params.slug}`);
+function getPostBySlug(slug: string) {
+  return posts.find((post) => post.slug === slug);
+}
+
+export default async function PostPage({ params }: PostProps) {
+  const { slug } = await params;
+  const post = getPostBySlug(slug);
+
+  if (post == null) notFound();
   const postDate = format(
     addMinutes(new Date(post.date), new Date(post.date).getTimezoneOffset()),
     "MMMM d, yyyy"
   );
-  const MDXContent = getMDXComponent(post.body.code);
 
   return (
     <div className="flex flex-col justify-center divide-y mx-auto py-12 max-w-5xl">
@@ -27,7 +29,7 @@ const PostPage = ({ params }: { params: { slug: string } }) => {
         dangerouslySetInnerHTML={{ __html: post.title }}
       />
       <Image
-        src={post.coverImage}
+        src={post.cover}
         alt="some ai generated image i dunno"
         width={512}
         height={512}
@@ -51,11 +53,20 @@ const PostPage = ({ params }: { params: { slug: string } }) => {
           </div>
         </div>
         <article className="prose p-4 dark:prose-invert dark:prose-hotpink">
-          <MDXContent />
+          <MDXContent code={post.content} />
         </article>
       </section>
     </div>
   );
-};
+}
 
-export default PostPage;
+export async function generateMetadata({ params }: PostProps) {
+  const { slug } = await params;
+  const post = getPostBySlug(slug);
+  if (post == null) return {};
+  return { title: post.title, description: post.description };
+}
+
+export function generateStaticParams() {
+  return posts.map((post) => ({ slug: post.slug }));
+}
