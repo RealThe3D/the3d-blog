@@ -7,7 +7,7 @@ html {
   font-family: var(--font-inter);
 }
 
-pre {
+.shiki {
   font-family: var(--font-jetbrains-mono);
 }
 
@@ -43,12 +43,13 @@ html[style="color-scheme: dark;"] > ::-webkit-scrollbar-thumb:hover {
   background: #f43f5e;
 }
 
-code {
+/* CODE BLOCK STYLING */
+.shiki {
   counter-reset: line;
   counter-increment: line 0;
 }
 
-code .line::before {
+.shiki .line::before {
   content: counter(line);
   counter-increment: line;
   @apply mr-4 inline-block w-4 text-right text-gray-500;
