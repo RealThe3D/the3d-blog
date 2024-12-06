@@ -16,7 +16,8 @@ export default async function PostPage({ params }: PostProps) {
   const { slug } = await params;
   const post = getPostBySlug(slug);
 
-  if (post == null) notFound();
+  if (!post) return notFound();
+
   const postDate = format(
     addMinutes(new Date(post.date), new Date(post.date).getTimezoneOffset()),
     "MMMM d, yyyy"
