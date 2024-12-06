@@ -21,7 +21,7 @@ const Navbar = () => {
     theme === "light" ? setTheme("dark") : setTheme("light");
   }
   if (!mounted) {
-    button = <></>;
+    button = <button className="invisible w-6 h-6"></button>;
   }
   return (
     <nav className="flex justify-between items-center p-4">
