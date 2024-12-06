@@ -1,5 +1,8 @@
 import * as runtime from "react/jsx-runtime";
 
+const sharedComponents = {};
+
+// parse the Velite generated MDX code into a React component function
 const useMDXComponent = (code: string) => {
   const fn = new Function(code);
   return fn({ ...runtime }).default;
@@ -8,11 +11,10 @@ const useMDXComponent = (code: string) => {
 interface MDXProps {
   code: string;
   components?: Record<string, React.ComponentType>;
-  // deno-lint-ignore no-explicit-any
-  [key: string]: any;
 }
 
-export const MDXContent = ({ code, components, ...props }: MDXProps) => {
+// MDXContent component
+export const MDXContent = ({ code, components }: MDXProps) => {
   const Component = useMDXComponent(code);
-  return <Component components={{ ...components }} {...props} />;
+  return <Component components={{ ...sharedComponents, ...components }} />;
 };
