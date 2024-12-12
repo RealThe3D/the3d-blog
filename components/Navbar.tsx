@@ -18,8 +18,9 @@ const Navbar = () => {
   }, []);
 
   function changeTheme() {
-    theme === "light" ? setTheme("dark") : setTheme("light");
+    setTheme(theme === "light" ? "dark" : "light");
   }
+
   if (!mounted) {
     button = <button className="invisible w-6 h-6"></button>;
   }
