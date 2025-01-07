@@ -11,6 +11,7 @@ const Page = () => {
           width={256}
           height={256}
           className="w-max rounded-full"
+          priority
         />
         <div className="text-xl mt-2 font-bold">Hello, I&apos;m The3D.</div>
         <div className="place-self-center xl:place-self-start text-center xl:text-left">
@@ -19,6 +20,8 @@ const Page = () => {
           Majoring in Computer Science and <br /> Electrical Engineering. 🎓
           <br />
           Class of MMXXV 😃
+          <br />
+          Soon Class of MMXIX in College! 🎓
         </div>
       </div>
       <div className="flex flex-col xl:mt-0 mt-4 mx-auto md:mx-20 items-center md:items-start">
