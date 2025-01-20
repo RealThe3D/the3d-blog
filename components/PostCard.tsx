@@ -24,7 +24,7 @@ const PostCard = (post: (typeof posts)[0]) => {
           </div>
           <Link className="text-blue-600" href={"/posts/" + post.slug}>
             <span className="flex items-center space-x-2">
-              <span>Read More</span>
+              <span>Read This Post</span>
               <FaArrowRight />
             </span>
           </Link>
