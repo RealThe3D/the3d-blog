@@ -17,11 +17,11 @@ const Page = () => {
         <div className="place-self-center xl:place-self-start text-center xl:text-left">
           18 Years Old 🏌️‍♂️
           <br />
-          Majoring in Computer Science and <br /> Electrical Engineering. 🎓
+          Majoring in Computer Science 🎓
           <br />
-          Class of MMXXV 😃
+          H.S. Graduate: Class of MMXXV 😃
           <br />
-          Soon Class of MMXIX in College! 🎓
+          Soon to be in the Class of MMXIX in College! 🎓
         </div>
       </div>
       <div className="flex flex-col xl:mt-0 mt-4 mx-auto md:mx-20 items-center md:items-start">
