@@ -53,3 +53,13 @@ html[style="color-scheme: dark;"] > ::-webkit-scrollbar-thumb:hover {
   counter-increment: line;
   @apply mr-4 inline-block w-4 text-right text-gray-500;
 }
+
+
+/* TAILWIND CUSTOM CLASSES */
+
+@theme {
+  --color-midnight: rgba(14, 14, 15, 0.92);
+  --color-main-bg: #0e0e0f;
+}
+
+@custom-variant dark (&:where([data-theme=dark], [data-theme=dark] *));

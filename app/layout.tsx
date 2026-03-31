@@ -2,7 +2,7 @@ import Navbar from "@/components/Navbar";
 import "./globals.css";
 import type { Metadata } from "next";
 import { Inter, JetBrains_Mono } from "next/font/google";
-import { Providers } from "./providers";
+import ThemeProvider from "@/providers/ThemeProvider";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 const JetBrainsMono = JetBrains_Mono({
@@ -27,13 +27,13 @@ export default function RootLayout({
     <html
       lang="en"
       className={`${inter.variable} ${JetBrainsMono.variable}`}
-      suppressHydrationWarning
+      data-theme="dark"
     >
-      <body className="p-4">
-        <Providers>
+      <body className="dark:text-white dark:bg-main-bg">
+        <ThemeProvider>
           <Navbar />
           {children}
-        </Providers>
+        </ThemeProvider>
       </body>
     </html>
   );
