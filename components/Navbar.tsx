@@ -16,21 +16,26 @@ const Navbar = () => {
   }
   return (
     // TODO: Add hover animations
-    <nav className="flex items-center justify-between sticky top-0 border-b py-6 px-10 backdrop-blur-md z-100 bg-white dark:bg-midnight border-gray-200 dark:border-white/10">
+    <nav className="flex items-center justify-between sticky top-0 border-b py-2 px-4 sm:py-6 sm:px-10 backdrop-blur-md z-100 bg-white/90 dark:bg-midnight border-gray-200 dark:border-white/10">
       <span className="text-gray-900 dark:text-gray-100">The3D</span>
-      <div className="flex gap-7 text-gray-600 dark:text-gray-500 text-sm items-center">
-        <Link href="/">Home</Link>
-        <Link href="/posts">Posts</Link>
+      <div className="flex gap-3 sm:gap-7 text-gray-600 dark:text-gray-500 text-sm items-center">
+        <Link className="hidden sm:block" href="/">
+          Home
+        </Link>
+        <Link className="hidden sm:block" href="/posts">
+          Posts
+        </Link>
         <Link
-          className="border border-gray-300 dark:border-gray-700 rounded-lg py-2 px-3.5 flex items-center text-gray-700 dark:text-gray-300 gap-2"
+          className="border border-gray-300 dark:border-gray-700 rounded-lg py-2 px-2 sm:px-3.5 flex items-center text-gray-700 dark:text-gray-300 gap-2"
           href="https://github.com/RealThe3D/the3d-blog"
         >
           <FaGithub />
-          <span>GitHub</span>
+          <span className="hidden sm:inline">GitHub</span>
         </Link>
         {button}
       </div>
     </nav>
   );
 };
+
 export default Navbar;
