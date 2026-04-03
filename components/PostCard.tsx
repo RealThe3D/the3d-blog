@@ -14,8 +14,10 @@ const PostCard = (post: Post) => {
       <div className="flex flex-row items-center justify-between">
         <div className="flex flex-col gap-2 py-5">
           <div className="flex flex-row gap-2.5 text-xs items-center">
-            <span className="uppercase">{post.categories[0]}</span> &#8226;{" "}
-            <span className="text-stone-450">{postDate}</span>
+            <span className="uppercase dark:text-secondary">
+              {post.categories[0]}
+            </span>
+            &#8226; <span className="text-stone-450">{postDate}</span>
           </div>
           <h2 className="text-lg">{post.title}</h2>
           <p className="text-sm text-stone-450">{post.description}</p>
