@@ -60,6 +60,7 @@ html[style="color-scheme: dark;"] > ::-webkit-scrollbar-thumb:hover {
 @theme {
   --color-midnight: rgba(14, 14, 15, 0.92);
   --color-main-bg: #0e0e0f;
+  --color-stone-450: #8a8784;
 }
 
 @custom-variant dark (&:where([data-theme=dark], [data-theme=dark] *));
