@@ -1,10 +1,10 @@
 import Navbar from "@/components/Navbar";
 import "./globals.css";
 import type { Metadata } from "next";
-import { Inter, JetBrains_Mono } from "next/font/google";
+import { DM_Sans, JetBrains_Mono } from "next/font/google";
 import ThemeProvider from "@/providers/ThemeProvider";
 
-const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
+const DMSans = DM_Sans({ subsets: ["latin"], display: "swap" });
 const JetBrainsMono = JetBrains_Mono({
   subsets: ["latin"],
   variable: "--font-jetbrains-mono",
@@ -26,7 +26,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${inter.variable} ${JetBrainsMono.variable}`}
+      className={`${DMSans.className} ${JetBrainsMono.variable}`}
       data-theme="dark"
     >
       <body className="dark:text-white dark:bg-main-bg">
