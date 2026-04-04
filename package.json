@@ -1,6 +1,6 @@
 {
   "name": "the3d-blog",
-  "version": "2.1.0",
+  "version": "3.0.0",
   "private": true,
   "license": "MIT",
   "repository": "https://www.github.com/RealThe3D/the3d-blog.git",
@@ -30,6 +30,7 @@
     "@shikijs/rehype": "^1.27.2",
     "@sindresorhus/slugify": "^2.2.1",
     "date-fns": "^4.1.0",
+    "motion": "^12.38.0",
     "next": "^16.0.8",
     "react": "^19.2.1",
     "react-dom": "^19.2.1",
