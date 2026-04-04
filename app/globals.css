@@ -64,4 +64,8 @@ html[style="color-scheme: dark;"] > ::-webkit-scrollbar-thumb:hover {
   --color-secondary: rgb(2, 211, 230);
 }
 
-@custom-variant dark (&:where([data-theme=dark], [data-theme=dark] *));
+@utility prose-stone {
+   --tw-prose-bullets: rgb(2, 211, 230);
+}
+
+@custom-variant dark (&:where([data-theme=dark], [data-theme=dark] *)); 
