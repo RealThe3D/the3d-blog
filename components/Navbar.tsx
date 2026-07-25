@@ -6,7 +6,12 @@ import { useTheme } from "@/hooks/useTheme";
 const Navbar = () => {
   const { theme, toggleTheme, mounted } = useTheme();
   let button = (
-    <button onClick={toggleTheme} aria-label="Theme switcher">
+    <button
+      type="button"
+      onClick={toggleTheme}
+      aria-label="Theme switcher"
+      className="cursor-pointer hover:text-black dark:hover:text-white transition-colors"
+    >
       {theme === "light" ? <FaMoon size={24} /> : <FaSun size={24} />}
     </button>
   );
@@ -14,6 +19,7 @@ const Navbar = () => {
   if (!mounted) {
     button = <button className="invisible w-6 h-6"></button>;
   }
+
   return (
     // TODO: Add hover animations
     <nav className="flex items-center justify-between sticky top-0 border-b py-2 px-4 sm:py-6 sm:px-10 backdrop-blur-md z-100 bg-white/90 dark:bg-midnight border-gray-200 dark:border-white/10">

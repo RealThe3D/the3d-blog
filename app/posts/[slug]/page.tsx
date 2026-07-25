@@ -1,9 +1,8 @@
 import { addMinutes, format } from "date-fns";
 import Image from "next/image";
-import Link from "next/link";
 import { notFound } from "next/navigation";
-import { FaAngleLeft } from "react-icons/fa";
 import { posts } from "@/.velite";
+import BackToPosts from "@/components/BackToPosts";
 import { MDXContent } from "@/components/Mdx";
 import ProgressBar from "@/components/ProgressBar";
 
@@ -30,13 +29,7 @@ export default async function PostPage({ params }: PostProps) {
     <>
       <ProgressBar />
       <div className="prose dark:prose-stone prose-img:rounded-lg dark:prose-invert mx-auto p-6">
-        <Link
-          className="flex flex-row items-center gap-2 text-sm no-underline text-stone-450"
-          href="/"
-        >
-          <FaAngleLeft />
-          Back to posts
-        </Link>
+        <BackToPosts />
         <header className="flex flex-col">
           <div className="flex gap-2.5 items-center text-sm py-6">
             <span className="uppercase text-secondary bg-blue-950 px-2.5 rounded-2xl text-xs py-1 tracking-wider">
