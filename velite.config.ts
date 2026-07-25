@@ -1,11 +1,21 @@
-import { defineConfig, s } from "velite";
-import readingTime from "reading-time";
-import slugify from "@sindresorhus/slugify";
 import rehypeShiki from "@shikijs/rehype";
+import slugify from "@sindresorhus/slugify";
+import readingTime from "reading-time";
+import { defineConfig, s } from "velite";
 
 function clean(pathname: string) {
-  return pathname.replace("posts/", "");
+  return pathname.replace(/^posts\/\d{2}-/, "");
 }
+
+// function slugify(str: string): string {
+//   return str
+//     .toLowerCase()
+//     .trim()
+//     .replace(/[^\w\s-]/g, "")
+//     .replace(/[\s_]+/g, "-")
+//     .replace(/^-+|-+$/g, "");
+// }
+
 export default defineConfig({
   collections: {
     posts: {
