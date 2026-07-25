@@ -68,7 +68,24 @@ export async function generateMetadata({ params }: PostProps) {
   const { slug } = await params;
   const post = getPostBySlug(slug);
   if (post == null) return {};
-  return { title: post.title, description: post.description };
+
+  const coverUrl = post.cover;
+
+  return {
+    title: post.title,
+    description: post.description,
+    openGraph: {
+      title: post.title,
+      description: post.description,
+      images: coverUrl,
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: post.title,
+      description: post.description,
+      images: coverUrl,
+    },
+  };
 }
 
 export function generateStaticParams() {
