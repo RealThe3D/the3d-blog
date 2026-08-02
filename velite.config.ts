@@ -1,20 +1,7 @@
 import rehypeShiki from "@shikijs/rehype";
-import slugify from "@sindresorhus/slugify";
 import readingTime from "reading-time";
 import { defineConfig, s } from "velite";
-
-function clean(pathname: string) {
-  return pathname.replace(/^posts\/\d{2}-/, "");
-}
-
-// function slugify(str: string): string {
-//   return str
-//     .toLowerCase()
-//     .trim()
-//     .replace(/[^\w\s-]/g, "")
-//     .replace(/[\s_]+/g, "-")
-//     .replace(/^-+|-+$/g, "");
-// }
+import { clean, slugify } from "./lib/slug-utils";
 
 export default defineConfig({
   collections: {

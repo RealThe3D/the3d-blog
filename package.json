@@ -1,6 +1,6 @@
 {
   "name": "the3d-blog",
-  "version": "3.0.0",
+  "version": "3.0.1",
   "private": true,
   "license": "MIT",
   "repository": "https://www.github.com/RealThe3D/the3d-blog.git",
@@ -9,7 +9,9 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "velite:build": "velite build"
+    "test": "jest",
+    "velite:build": "velite build",
+    "velite:dev": "velite dev"
   },
   "devDependencies": {
     "@biomejs/biome": "^2.3.8",
@@ -22,13 +24,15 @@
     "autoprefixer": "^10.4.20",
     "eslint": "^9.18.0",
     "eslint-config-next": "^15.1.5",
+    "jest": "^29.7.0",
+    "@types/jest": "^30.0.0",
+    "ts-jest": "^29.1.2",
     "postcss": "^8.5.6",
     "tailwindcss": "^4.1.17",
     "typescript": "^5.7.3"
   },
   "dependencies": {
     "@shikijs/rehype": "^1.27.2",
-    "@sindresorhus/slugify": "^2.2.1",
     "date-fns": "^4.1.0",
     "motion": "^12.38.0",
     "next": "^16.0.8",
