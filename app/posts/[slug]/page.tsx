@@ -10,11 +10,11 @@ interface PostProps {
   params: Promise<{ slug: string }>;
 }
 
-function getPostBySlug(slug: string) {
+const getPostBySlug = (slug: string) => {
   return posts.find((post) => post.slug === slug);
-}
+};
 
-export default async function PostPage({ params }: PostProps) {
+const PostPage = async ({ params }: PostProps) => {
   const { slug } = await params;
   const post = getPostBySlug(slug);
 
@@ -32,15 +32,15 @@ export default async function PostPage({ params }: PostProps) {
         <BackToPosts />
         <header className="flex flex-col">
           <div className="flex gap-2.5 items-center text-sm py-6">
-            <span className="uppercase text-secondary bg-blue-950 px-2.5 rounded-2xl text-xs py-1 tracking-wider">
+            <span className="uppercase bg-secondary text-blue-950 dark:text-secondary px-3 rounded-2xl text-xs py-1 tracking-wider">
               {post.categories[0]}
             </span>
-            <span className="border-white/15 border-2 rounded-[50%] w-1 h-1" />
+            <span className="border-stone-450 dark:border-white/15 border-2 rounded-full" />
             <span className="text-stone-450">{postDate}</span>
-            <span className="border-white/15 border-2 rounded-[50%] w-1 h-1" />
+            <span className="dark:border-white/15 border-2 rounded-full" />
             <span className="text-stone-450">{post.readTime} min read</span>
           </div>
-          <h1 className="leading-[1.7">{post.title}</h1>
+          <h1>{post.title}</h1>
           <Image
             className="h-80 object-cover border rounded-xl mt-0"
             width={1080}
@@ -55,7 +55,7 @@ export default async function PostPage({ params }: PostProps) {
       </div>
     </>
   );
-}
+};
 
 export async function generateMetadata({ params }: PostProps) {
   const { slug } = await params;
@@ -84,3 +84,5 @@ export async function generateMetadata({ params }: PostProps) {
 export function generateStaticParams() {
   return posts.map((post) => ({ slug: post.slug }));
 }
+
+export default PostPage;
