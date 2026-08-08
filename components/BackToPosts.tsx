@@ -6,10 +6,10 @@ import { FaAngleLeft } from "react-icons/fa";
 
 const MotionLink = motion.create(Link);
 
-export default function BackToPosts() {
+const BackToPosts = () => {
   return (
     <MotionLink
-      className="flex origin-left flex-row items-center gap-2 text-sm text-stone-450 no-underline transition-colors hover:text-white"
+      className="inline-flex origin-left flex-row items-center gap-2 text-sm text-stone-450 no-underline transition-colors hover:text-black dark:hover:text-white"
       href="/"
       whileHover={{ scale: 1.05 }}
       transition={{ duration: 0.2 }}
@@ -18,4 +18,6 @@ export default function BackToPosts() {
       Back to posts
     </MotionLink>
   );
-}
+};
+
+export default BackToPosts;
