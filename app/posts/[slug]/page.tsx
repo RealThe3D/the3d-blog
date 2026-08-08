@@ -32,7 +32,7 @@ const PostPage = async ({ params }: PostProps) => {
         <BackToPosts />
         <header className="flex flex-col">
           <div className="flex gap-2.5 items-center text-sm py-6">
-            <span className="uppercase bg-secondary text-blue-950 dark:text-secondary px-3 rounded-2xl text-xs py-1 tracking-wider">
+            <span className="uppercase bg-secondary dark:bg-blue-950 text-blue-950 dark:text-secondary px-3 rounded-2xl text-xs py-1 tracking-wider">
               {post.categories[0]}
             </span>
             <span className="border-stone-450 dark:border-white/15 border-2 rounded-full" />
