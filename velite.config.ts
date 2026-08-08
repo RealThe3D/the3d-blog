@@ -26,7 +26,6 @@ export default defineConfig({
     },
   },
   mdx: {
-    // deno-lint-ignore no-explicit-any
-    rehypePlugins: [[rehypeShiki as any, { theme: "one-dark-pro" }]],
+    rehypePlugins: [[rehypeShiki, { theme: "one-dark-pro" }]],
   },
 });
