@@ -2,6 +2,8 @@
 import Link from "next/link";
 import { FaGithub, FaMoon, FaSun } from "react-icons/fa";
 import { useTheme } from "@/hooks/useTheme";
+import PushNotificationManager from "./PushNotificationManager";
+import { Button } from "./ui/button";
 
 const Navbar = () => {
   const { theme, toggleTheme, mounted } = useTheme();
@@ -31,13 +33,16 @@ const Navbar = () => {
         <Link className="hidden sm:block" href="/posts">
           Posts
         </Link>
-        <Link
-          className="border border-gray-300 dark:border-gray-700 rounded-lg py-2 px-2 sm:px-3.5 flex items-center text-gray-700 dark:text-gray-300 gap-2"
-          href="https://github.com/RealThe3D/the3d-blog"
-        >
-          <FaGithub />
-          <span className="hidden sm:inline">GitHub</span>
+        {/* <Link className="border border-gray-300 dark:border-gray-700 rounded-lg py-2 px-2 sm:px-3.5 flex items-center text-gray-700 dark:text-gray-300 gap-2"> */}
+        <Link href="https://github.com/RealThe3D/the3d-blog">
+          <Button size="lg">
+            <FaGithub />
+            <span className="hidden sm:inline">GitHub</span>
+          </Button>
         </Link>
+
+        {/* </Link> */}
+        <PushNotificationManager />
         {button}
       </div>
     </nav>

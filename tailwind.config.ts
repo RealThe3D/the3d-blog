@@ -5,19 +5,7 @@ const config: Config = {
     "./components/**/*.{js,ts,jsx,tsx,mdx}",
     "./app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
-  theme: {
-    extend: {
-      // @ts-ignore type safety idk
-      typography: ({ _theme }) => ({
-        hotpink: {
-          css: {
-            "--tw-prose-invert-headings": "#FF3366",
-            "--tw-prose-invert-body": "#FFFFFF",
-          },
-        },
-      }),
-    },
-  },
+  theme: {},
   plugins: [require("@tailwindcss/typography")],
   darkMode: "class",
 };

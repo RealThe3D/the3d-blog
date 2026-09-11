@@ -1,0 +1,31 @@
+name: Notify New Posts
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "content/posts/**.mdx" # adjust to your posts directory
+
+jobs:
+  notify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 2 # need previous commit to diff against
+
+      - name: Find newly added posts
+        id: diff
+        run: |
+          NEW_FILES=$(git diff --diff-filter=A --name-only HEAD^ HEAD -- content/posts/*.mdx)
+          echo "$NEW_FILES"
+          SLUGS=$(echo "$NEW_FILES" | xargs -n1 basename | sed 's/\.mdx$//' | jq -R . | jq -s -c .)
+          echo "slugs=$SLUGS" >> "$GITHUB_OUTPUT"
+
+      - name: Call notify endpoint
+        if: steps.diff.outputs.slugs != '[]'
+        run: |
+          curl -X POST https://yourdomain.com/api/notify-new \
+            -H "Content-Type: application/json" \
+            -H "Authorization: Bearer ${{ secrets.NOTIFY_SECRET }}" \
+            -d "{\"slugs\": ${{ steps.diff.outputs.slugs }}}"

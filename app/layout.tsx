@@ -3,6 +3,7 @@ import "./globals.css";
 import type { Metadata } from "next";
 import { DM_Sans, JetBrains_Mono } from "next/font/google";
 import ThemeProvider from "@/providers/ThemeProvider";
+import { Toaster } from "@/components/ui/toast";
 
 const DMSans = DM_Sans({ subsets: ["latin"], display: "swap" });
 const JetBrainsMono = JetBrains_Mono({
@@ -33,6 +34,7 @@ export default function RootLayout({
         <ThemeProvider>
           <Navbar />
           {children}
+          <Toaster />
         </ThemeProvider>
       </body>
     </html>
