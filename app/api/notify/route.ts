@@ -44,6 +44,7 @@ export async function POST(req: Request) {
           payload,
         );
       } catch (err) {
+        // @ts-ignore
         if (err.statusCode === 410) {
           db.delete(pushSubTable).where(sql`endpoint = ${sub.endpoint}`);
         }
