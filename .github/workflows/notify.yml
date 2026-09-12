@@ -25,7 +25,7 @@ jobs:
       - name: Call notify endpoint
         if: steps.diff.outputs.slugs != '[]'
         run: |
-          curl -X POST https://yourdomain.com/api/notify-new \
+          curl -X POST https://the3d.vercel.app/api/notify \
             -H "Content-Type: application/json" \
             -H "Authorization: Bearer ${{ secrets.NOTIFY_SECRET }}" \
             -d "{\"slugs\": ${{ steps.diff.outputs.slugs }}}"
