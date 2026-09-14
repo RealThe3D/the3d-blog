@@ -1,7 +1,7 @@
 import webpush from "web-push";
 import matter from "gray-matter";
-import fs from "fs";
-import path from "path";
+import fs from "node:fs";
+import path from "node:path";
 import { db } from "@/lib/db";
 import { pushSubTable, notifiedPostsTable } from "@/lib/db/schema";
 import { eq, sql } from "drizzle-orm";
@@ -28,7 +28,7 @@ export async function POST(req: Request) {
     const payload = JSON.stringify({
       title: data.title,
       body: data.excerpt || "New post published",
-      url: `/blog/${slug}`,
+      url: `/posts/${slug}`,
     });
 
     for (const sub of subscriptions) {
