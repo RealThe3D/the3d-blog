@@ -1,6 +1,6 @@
 # The3D Blog
 
-This is my personal blog, written in TypeScript using Next.js!
+This is my personal blog, written in TypeScript using TanStack Start!
 
 You'll find me rambling about nonsense here.
 
@@ -15,7 +15,7 @@ You're free to change up the other files and submit a PR for changes I should im
 
 # File Structure
 
-- `app/` - The root of the project. Most of the content is here.
-- `components/` - React Components used throughout the project.
+- `src/` - The root of the project. Most of the content is here.
+- `src/components/` - React Components used throughout the project.
 - `content/posts` - Stores all the MDX (pages) for the blog.
 - `public/` - Images.

@@ -16,7 +16,6 @@ self.addEventListener("push", (event) => {
 });
 
 self.addEventListener("notificationclick", (event) => {
-  console.log("Notification click received.");
   event.notification.close();
   event.waitUntil(clients.openWindow("https://the3d.vercel.app"));
 });
