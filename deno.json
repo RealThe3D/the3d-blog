@@ -1,7 +1,0 @@
-{
-  "imports": {
-    "@/": "./",
-    "velite": "npm:velite",
-    "@shikijs/rehype": "npm:@shikijs/rehype"
-  }
-}
