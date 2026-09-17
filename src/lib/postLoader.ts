@@ -1,7 +1,7 @@
-import fs from "node:fs/promises";
 import { renderHtml } from "@tanstack/markdown/html";
 import { parseMarkdown } from "@tanstack/markdown/parser";
 import { createServerFn } from "@tanstack/react-start";
+import { useStorage } from "nitro/storage";
 import matter from "gray-matter";
 import { z } from "zod";
 import { clean } from "./slug-utils";
@@ -19,16 +19,20 @@ type PostFrontmatter = z.infer<typeof frontmatterSchema>;
 
 export type { PostFrontmatter as Post };
 
+const postsStorage = useStorage("assets:posts");
+
 export const loadPost = createServerFn()
   .validator(z.object({ title: z.string() }))
   .handler(async ({ data }) => {
-    const postsFolder = await fs.readdir(`content/posts`);
+    const postsFolder = await postsStorage.getKeys();
     const post = postsFolder.find(
       (file) => clean(file.slice(0, -3)) === data.title,
     );
 
-    const file = await fs.readFile(`content/posts/${post}`, "utf-8");
     if (!post) throw new Error("Post not found");
+
+    const file = await postsStorage.getItem(post);
+    if (typeof file !== "string") throw new Error("Post not found");
     const { data: fmData, content } = matter(file);
 
     const frontmatter: PostFrontmatter = frontmatterSchema.parse(fmData);
@@ -40,13 +44,14 @@ export const loadPost = createServerFn()
   });
 
 export const getAllPosts = createServerFn().handler(async () => {
-  const contentFolder = await fs.readdir("content/posts");
+  const contentFolder = await postsStorage.getKeys();
 
   const posts = await Promise.all(
     contentFolder
       .filter((filename) => filename.endsWith(".md"))
       .map(async (filename) => {
-        const file = await fs.readFile(`content/posts/${filename}`, "utf-8");
+        const file = await postsStorage.getItem(filename);
+        if (typeof file !== "string") throw new Error("Post not found");
         const { data: fmData, content } = matter(file);
         const frontmatter = frontmatterSchema.parse(fmData);
         const document = parseMarkdown(content, { frontmatter: false });
