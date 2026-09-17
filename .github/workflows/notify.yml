@@ -4,7 +4,7 @@ on:
   push:
     branches: [main]
     paths:
-      - "content/posts/**.mdx" # adjust to your posts directory
+      - "content/posts/**.md" # Will be .mdx soon!
 
 jobs:
   notify:
@@ -12,20 +12,23 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
-          fetch-depth: 2 # need previous commit to diff against
+          fetch-depth: 2
 
       - name: Find newly added posts
         id: diff
         run: |
-          NEW_FILES=$(git diff --diff-filter=A --name-only HEAD^ HEAD -- content/posts/*.mdx)
-          echo "$NEW_FILES"
-          SLUGS=$(echo "$NEW_FILES" | xargs -n1 basename | sed 's/\.mdx$//' | jq -R . | jq -s -c .)
+          # Build the JSON array directly so an empty diff does not invoke
+          # xargs with no operands.
+          SLUGS=$(git diff --diff-filter=A --name-only HEAD^ HEAD -- 'content/posts/*.md' \
+            | sed 's#^.*/##; s/\.md$//' \
+            | jq -R -s -c 'split("\n") | map(select(length > 0))')
+          echo "New post slugs: $SLUGS"
           echo "slugs=$SLUGS" >> "$GITHUB_OUTPUT"
 
       - name: Call notify endpoint
         if: steps.diff.outputs.slugs != '[]'
         run: |
-          curl -X POST https://the3d.vercel.app/api/notify \
+          curl --fail-with-body -X POST https://the3d.vercel.app/api/notify \
             -H "Content-Type: application/json" \
             -H "Authorization: Bearer ${{ secrets.NOTIFY_SECRET }}" \
-            -d "{\"slugs\": ${{ steps.diff.outputs.slugs }}}"
+            -d '{"slugs": ${{ steps.diff.outputs.slugs }}}'
