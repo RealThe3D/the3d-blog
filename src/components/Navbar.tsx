@@ -35,7 +35,7 @@ const Navbar = () => {
 					</Link>
 					{/* <Link className="border border-gray-300 dark:border-gray-700 rounded-lg py-2 px-2 sm:px-3.5 flex items-center text-gray-700 dark:text-gray-300 gap-2"> */}
 					<a href="https://github.com/RealThe3D/the3d-blog">
-						<Button size="lg" variant="outline">
+						<Button size="lg" variant="outline" aria-label="GitHub Logo">
 							<Github />
 							<span className="hidden sm:inline">GitHub</span>
 						</Button>
