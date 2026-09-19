@@ -31,6 +31,10 @@ export const Route = createFileRoute("/")({
 				name: "twitter:url",
 				content: `https://the3d.vercel.app/`,
 			},
+			{
+				name: "twitter:card",
+				content: "summary_large_image",
+			},
 		],
 	}),
 	component: Home,

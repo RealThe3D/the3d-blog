@@ -31,6 +31,10 @@ export const Route = createFileRoute("/posts/$slug")({
 				name: "twitter:url",
 				content: `https://the3d.vercel.app/posts/${params.slug}`,
 			},
+			{
+				name: "twitter:card",
+				content: "summary_large_image",
+			},
 		],
 	}),
 });
