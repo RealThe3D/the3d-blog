@@ -5,7 +5,7 @@ interface ImageProps {
 	className: string;
 }
 
-const WIDTHS = [640, 750, 828, 1080, 1200, 1920, 2048, 3840];
+const WIDTHS = [400, 800, 1200, 1600, 2000];
 
 const Image = ({ src, width, alt, className }: ImageProps) => {
 	const optimizedPath = (w: number) =>
