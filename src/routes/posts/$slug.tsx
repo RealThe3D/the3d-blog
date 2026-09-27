@@ -1,5 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { addMinutes, format } from "date-fns";
+import Image from "#/components/Image";
 import BackToPosts from "@/components/BackToPosts";
 import ProgressBar from "@/components/ProgressBar";
 import { loadPost } from "@/lib/postLoader";
@@ -66,10 +67,9 @@ function RouteComponent() {
 						<span className="text-stone-450">{readTime} min read</span>
 					</div>
 					<h1>{frontmatter.title}</h1>
-					<img
+					<Image
 						className="h-80 object-cover border rounded-xl mt-0"
-						width={1080}
-						height={1080}
+						width={2000}
 						src={frontmatter.cover}
 						alt="ai generated cover image"
 					/>

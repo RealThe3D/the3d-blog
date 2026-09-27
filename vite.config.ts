@@ -11,7 +11,10 @@ const config = defineConfig({
 	plugins: [
 		devtools(),
 		nitro({
-			serverAssets: [{ baseName: "posts", dir: resolve("content/posts") }],
+			serverAssets: [
+				{ baseName: "posts", dir: resolve("content/posts") },
+				{ baseName: "images", dir: "public" },
+			],
 		}),
 		tailwindcss(),
 		tanstackStart(),

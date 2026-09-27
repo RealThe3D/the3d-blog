@@ -10,12 +10,18 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as ApiImageRouteImport } from './routes/api/image'
 import { Route as ApiNotifyRouteImport } from './routes/api/notify'
 import { Route as PostsSlugRouteImport } from './routes/posts/$slug'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ApiImageRoute = ApiImageRouteImport.update({
+  id: '/api/image',
+  path: '/api/image',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ApiNotifyRoute = ApiNotifyRouteImport.update({
@@ -31,30 +37,34 @@ const PostsSlugRoute = PostsSlugRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/api/image': typeof ApiImageRoute
   '/api/notify': typeof ApiNotifyRoute
   '/posts/$slug': typeof PostsSlugRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/api/image': typeof ApiImageRoute
   '/api/notify': typeof ApiNotifyRoute
   '/posts/$slug': typeof PostsSlugRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/api/image': typeof ApiImageRoute
   '/api/notify': typeof ApiNotifyRoute
   '/posts/$slug': typeof PostsSlugRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/api/notify' | '/posts/$slug'
+  fullPaths: '/' | '/api/image' | '/api/notify' | '/posts/$slug'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/api/notify' | '/posts/$slug'
-  id: '__root__' | '/' | '/api/notify' | '/posts/$slug'
+  to: '/' | '/api/image' | '/api/notify' | '/posts/$slug'
+  id: '__root__' | '/' | '/api/image' | '/api/notify' | '/posts/$slug'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  ApiImageRoute: typeof ApiImageRoute
   ApiNotifyRoute: typeof ApiNotifyRoute
   PostsSlugRoute: typeof PostsSlugRoute
 }
@@ -66,6 +76,13 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/image': {
+      id: '/api/image'
+      path: '/api/image'
+      fullPath: '/api/image'
+      preLoaderRoute: typeof ApiImageRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/api/notify': {
@@ -87,6 +104,7 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  ApiImageRoute: ApiImageRoute,
   ApiNotifyRoute: ApiNotifyRoute,
   PostsSlugRoute: PostsSlugRoute,
 }
