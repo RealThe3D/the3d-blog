@@ -1,5 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { addMinutes, format } from "date-fns";
+import { useEffect, useRef } from "react";
 import Image from "#/components/Image";
 import BackToPosts from "@/components/BackToPosts";
 import ProgressBar from "@/components/ProgressBar";
@@ -42,6 +43,39 @@ export const Route = createFileRoute("/posts/$slug")({
 
 function RouteComponent() {
 	const { frontmatter, html, readTime } = Route.useLoaderData();
+	const articleRef = useRef<HTMLElement>(null);
+
+	useEffect(() => {
+		if (!html.includes('class="twitter-tweet"')) return;
+
+		const article = articleRef.current;
+		if (!article) return;
+
+		const twitterWindow = window as typeof window & {
+			twttr?: {
+				widgets?: { load: (root?: HTMLElement) => void };
+			};
+		};
+		const loadWidgets = () => twitterWindow.twttr?.widgets?.load(article);
+
+		if (twitterWindow.twttr?.widgets) {
+			loadWidgets();
+			return;
+		}
+
+		let script = document.querySelector<HTMLScriptElement>(
+			'script[src="https://platform.x.com/widgets.js"]',
+		);
+		if (!script) {
+			script = document.createElement("script");
+			script.src = "https://platform.x.com/widgets.js";
+			script.async = true;
+			document.body.appendChild(script);
+		}
+
+		script.addEventListener("load", loadWidgets, { once: true });
+		return () => script?.removeEventListener("load", loadWidgets);
+	}, [html]);
 
 	const postDate = format(
 		addMinutes(
@@ -74,7 +108,7 @@ function RouteComponent() {
 						alt="ai generated cover image"
 					/>
 				</header>
-				<article dangerouslySetInnerHTML={{ __html: html }} />
+				<article ref={articleRef} dangerouslySetInnerHTML={{ __html: html }} />
 				{/* <MDXContent code={post.content} /> */}
 				{/* </article> */}
 			</main>
