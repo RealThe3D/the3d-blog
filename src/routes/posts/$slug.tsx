@@ -1,8 +1,8 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { addMinutes, format } from "date-fns";
 import { useEffect, useRef } from "react";
-import Image from "#/components/Image";
 import BackToPosts from "@/components/BackToPosts";
+import Image from "@/components/Image";
 import ProgressBar from "@/components/ProgressBar";
 import { loadPost } from "@/lib/postLoader";
 
