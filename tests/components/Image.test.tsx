@@ -1,6 +1,6 @@
 import { renderToStaticMarkup } from "react-dom/server";
 import { expect, it } from "vitest";
-import Image from "./Image";
+import Image from "@/components/Image";
 
 it("offers thumbnail-sized responsive image variants", () => {
 	const html = renderToStaticMarkup(

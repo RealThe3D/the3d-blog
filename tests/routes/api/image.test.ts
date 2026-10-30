@@ -4,7 +4,7 @@ import { expect, it, vi } from "vitest";
 const storage = vi.hoisted(() => ({ getItemRaw: vi.fn() }));
 vi.mock("nitro/storage", () => ({ useStorage: () => storage }));
 
-import { Route } from "./image";
+import { Route } from "@/routes/api/image";
 
 it.each([80, 160])("serves a %ipx WebP thumbnail", async (width) => {
 	storage.getItemRaw.mockResolvedValue(

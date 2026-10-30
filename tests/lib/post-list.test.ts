@@ -10,7 +10,7 @@ vi.mock("@tanstack/react-start", () => ({
 	}),
 }));
 
-import { getAllPosts } from "./postLoader";
+import { getAllPosts } from "@/lib/postLoader";
 
 beforeEach(() => vi.resetAllMocks());
 
