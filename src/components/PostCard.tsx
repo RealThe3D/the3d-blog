@@ -14,7 +14,7 @@ const PostCard = (post: Post) => {
 	);
 
 	return (
-		<Link to={`/posts/${post.title}`}>
+		<Link to="/posts/$slug" params={{ slug: post.title }}>
 			<div className="flex flex-row items-center justify-between">
 				<div className="flex flex-col gap-2 py-5">
 					<div className="flex flex-row gap-2.5 text-xs items-center">

@@ -2,7 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { useStorage } from "nitro/storage";
 import sharp from "sharp";
 
-const WIDTHS = [400, 800, 1200, 1600, 2000];
+const WIDTHS = [80, 160, 400, 800, 1200, 1600, 2000];
 const imageStorage = useStorage("assets:images");
 
 // TODO: Support WebP
