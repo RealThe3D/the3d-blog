@@ -1,7 +1,7 @@
 import { readdir, writeFile } from "node:fs/promises";
 import { join, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
-import {slugify} from '../src/lib/slug-utils';
+import { slugify } from "../src/lib/slug-utils.ts";
 
 const localDate = (date) => {
   const year = date.getFullYear();
@@ -68,4 +68,4 @@ if (
   }
 }
 
-export { scaffoldPost, slugifyTitle };
+export { scaffoldPost };

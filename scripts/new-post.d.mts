@@ -3,5 +3,3 @@ export declare const scaffoldPost: (
   postsDir?: string,
   date?: Date,
 ) => Promise<string>;
-
-export declare const slugifyTitle: (title: string) => string;
