@@ -1,13 +1,16 @@
 export const slugify = (value: string) => {
-  return value
-    .normalize("NFKD")
-    .replace(/[̀-ͯ]/g, "")
-    .toLowerCase()
-    .trim()
-    .replace(/[^a-z0-9]+/g, "-")
-    .replace(/^-+|-+$/g, "");
+	return value
+		.normalize("NFKD")
+		.replace(/[̀-ͯ]/g, "")
+		.toLowerCase()
+		.trim()
+		.replace(/[^a-z0-9]+/g, "-")
+		.replace(/^-+|-+$/g, "");
 };
 
 export const clean = (pathname: string) => {
-  return pathname.replace(/^\d{2}-/, "");
+	return pathname.replace(/^\d{2}-/, "");
 };
+
+// Slug without .md
+export const canonicalPostSlug = (value: string) => slugify(clean(value));

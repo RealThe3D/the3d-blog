@@ -7,7 +7,7 @@ import matter from "gray-matter";
 import { useStorage } from "nitro/storage";
 import readingTime from "reading-time";
 import { z } from "zod";
-import { clean } from "./slug-utils";
+import { canonicalPostSlug } from "./slug-utils";
 
 const frontmatterSchema = z.object({
 	title: z.string(),
@@ -28,7 +28,9 @@ export const loadPost = createServerFn()
 	.handler(async ({ data }) => {
 		const postsFolder = await postsStorage.getKeys();
 		const post = postsFolder.find(
-			(file) => clean(file.slice(0, -3)) === data.title,
+			(file) =>
+				file.endsWith(".md") &&
+				canonicalPostSlug(file.slice(0, -3)) === canonicalPostSlug(data.title),
 		);
 
 		if (!post) throw notFound();
@@ -46,7 +48,13 @@ export const loadPost = createServerFn()
 		const html = renderHtml(document, { allowHtml: true });
 		const readTime = Math.ceil(readingTime(html).minutes);
 
-		return { frontmatter, html, document, readTime };
+		return {
+			frontmatter,
+			html,
+			document,
+			readTime,
+			slug: canonicalPostSlug(post.slice(0, -3)),
+		};
 	});
 
 export const getAllPosts = createServerFn().handler(async () => {
@@ -62,7 +70,7 @@ export const getAllPosts = createServerFn().handler(async () => {
 				const frontmatter = frontmatterSchema.parse(fmData);
 
 				return {
-					title: clean(filename.slice(0, -3)),
+					title: canonicalPostSlug(filename.slice(0, -3)),
 					frontmatter,
 				};
 			}),
